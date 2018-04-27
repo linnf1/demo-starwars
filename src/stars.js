@@ -29,7 +29,8 @@
             ], 
             "created": "2014-12-09T13:50:51.644000Z", 
             "edited": "2014-12-20T21:17:56.891000Z", 
-            "url": "https://swapi.co/api/people/1/"
+            "url": "https://swapi.co/api/people/1/",
+            "imag": "x2"
         }, 
         {
             "name": "C-3PO", 

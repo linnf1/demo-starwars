@@ -1,24 +1,53 @@
 import React, { Component } from 'react';
-import Card from '../components/Card';
+import CardList from '../components/CardList';
+import SearchBox from '../components/SearchBox';
 import './App.css';
-import stars from '../stars';
+import { stars } from '../stars';
+import starsvid from './Stars.mp4'
 
 class App extends Component {
   //we need a constructor since we are bringing in the API
-  constructor(props) {
-    super(props);
+  //anything in consturctor or render, makeing own meoths use arrow funct syntax
+  constructor() {
+    super();
       this.state = {
-        people: [],
+        stars: [],
+        searchField: ''
     }
   }
+  componentDidMount(){
+    fetch('https://swapi.co/api/people')
+    .then(response => response.json())
+    .then(people => this.setState({ stars: people}));
+  }
+
+  onSearchChange = (event) => {
+    this.setState({searchField: event.target.value})
+  }
+
   render() {
-    return (
-      <div className="App tc">
+    // const filteredStars = this.state.stars.filter(star => {
+    //   return star.name.toLowerCase().includes(this.state.searchField.toLowerCase());
+    // })
+    if(this.state.stars.length === 0){
+      return <h1> Loading..</h1>
+    }else {
+      return (
+      <div className="App tc ">
       <h1>StarWars </h1>
-      <p>Choose your Hero..</p>
-      <Card id={stars[0].id} name={stars[0].name} gender={stars[0].gender} birth_year={stars[0].birth_year}/>
+      <p>Choose your Hero:</p>
+      <SearchBox searchChange={this.onSearchChange}/>
+      <CardList stars={stars}/>
+        <div className="fullscreen-bg">
+          <video className='fullscreen-bg__video' autoPlay loop muted>
+          <source src={starsvid} type='video/mp4' />
+          </video>
+        </div>
       </div>
     );
+
+    }
+    
   }
 }
 

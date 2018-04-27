@@ -1,17 +1,71 @@
 body {
   font-family: 'Roboto', sans-serif;
   height: 2000px;
-  background-color: grey;
+  background-color: black;
+  color: white;
 }
-h1 {
+h1, h2, h3 {
   font-family: 'Gugi', cursive;
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
+.thumb {
+  width: 80px;
+  height:  80px;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.videoTag{
+height: 100%;
+width: 100%;
+float: left;
+top: 0;
+padding: none;
+position: fixed; /* optional depending on what you want to do in your app */
+
+}.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fullscreen-bg {
+    background: url('./Stars.mp4') center center / cover no-repeat;
+  }
+
+  .fullscreen-bg__video {
+    display: none;
+  }
 }
