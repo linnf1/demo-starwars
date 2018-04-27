@@ -16,9 +16,9 @@ class App extends Component {
     }
   }
   componentDidMount(){
-    fetch('https://swapi.co/api/people')
+    fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
-    .then(people => this.setState({ stars: people}));
+    .then(users => this.setState({ stars: users}));
   }
 
   onSearchChange = (event) => {
@@ -26,9 +26,9 @@ class App extends Component {
   }
 
   render() {
-    // const filteredStars = this.state.stars.filter(star => {
-    //   return star.name.toLowerCase().includes(this.state.searchField.toLowerCase());
-    // })
+    const filteredStars = this.state.stars.filter(star => {
+      return star.name.toLowerCase().includes(this.state.searchField.toLowerCase());
+    })
     if(this.state.stars.length === 0){
       return <h1> Loading..</h1>
     }else {
@@ -37,7 +37,7 @@ class App extends Component {
       <h1>StarWars </h1>
       <p>Choose your Hero:</p>
       <SearchBox searchChange={this.onSearchChange}/>
-      <CardList stars={stars}/>
+      <CardList stars={filteredStars}/>
         <div className="fullscreen-bg">
           <video className='fullscreen-bg__video' autoPlay loop muted>
           <source src={starsvid} type='video/mp4' />
