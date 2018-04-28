@@ -10,7 +10,6 @@ const Card = ({name, model, manufacturer}) => {
 		<a className="f6 link dim br-pill ba bw2 ph3 pv2 mb2 dib yellow">{name}</a>
 		</p>
 		<p>{model}</p>
-		<p>{manufacturer}</p>
 	</div>
 	);
 }
