@@ -15,16 +15,16 @@ class App extends Component {
         searchField: ''
     }
   }
-  componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(users => this.setState({ stars: users}));
-  }
 
   onSearchChange = (event) => {
     this.setState({searchField: event.target.value})
   }
-
+  componentDidMount() {
+    fetch('https://swapi.co/api/starships/')
+      .then(response => response.json())
+      .then(result => result = result.results)
+      .then(ships => this.setState({ stars: ships }))
+}
   render() {
     const filteredStars = this.state.stars.filter(star => {
       return star.name.toLowerCase().includes(this.state.searchField.toLowerCase());
