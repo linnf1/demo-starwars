@@ -35,7 +35,7 @@ class App extends Component {
       return (
       <div className="App tc ">
       <h1>StarWars </h1>
-      <p>Choose your Hero:</p>
+      <p>Choose your Ship:</p>
       <SearchBox searchChange={this.onSearchChange}/>
       <CardList stars={filteredStars}/>
         <div className="fullscreen-bg">

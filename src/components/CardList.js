@@ -7,11 +7,9 @@ const CardList = ({ stars }) => {
 	<div>
 	{stars.map((u, i)  => {
 		return (<Card 
-			imag={stars[i].imag} 
-			key={stars[i].height} 
+			model={stars[i].model} 
 			name={stars[i].name} 
-			gender={stars[i].gender} 
-			birth_year={stars[i].birth_year}
+			manufacturer={stars[i].manufacturer} 
 			/>);
 
 	})
